@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const UserItem = ({ user: { login, avatar_url, html_url } }) => {
   return (
@@ -14,9 +15,9 @@ const UserItem = ({ user: { login, avatar_url, html_url } }) => {
         }}
       />
       <p className='user-login'>{login}</p>
-      <a href={html_url} className='more-btn'>
+      <Link to={`/user/${login}`} className='more-btn'>
         More
-      </a>
+      </Link>
     </div>
   );
 };
