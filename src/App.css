@@ -40,7 +40,7 @@ button {
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .navbar h1 {
@@ -256,18 +256,6 @@ button {
 }
 
 @media screen and (max-width: 500px) {
-  .navbar h1 {
-    font-size: 1.2rem;
-  }
-
-  .navbar i {
-    font-size: 1.2rem;
-  }
-
-  .navbar ul li a,
-  .navbar i {
-    font-size: 1rem;
-  }
   .user-info-grid {
     grid-template-columns: 1fr;
     grid-gap: 2rem;
