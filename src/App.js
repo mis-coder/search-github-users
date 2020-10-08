@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
 import "./App.css";
@@ -8,39 +8,31 @@ import Clear from "./components/layout/Clear";
 import Alert from "./components/layout/Alert";
 import User from "./components/users/User";
 import GithubState from "./context/github/GithubState";
+import AlertState from "./context/alert/AlertState";
 
 const App = () => {
-  const [alertMsg, setAlertMsg] = useState("");
-
-  // set an alert if there is literally nothing to be searched
-
-  const setAlert = (message) => {
-    setAlertMsg(message);
-    setTimeout(() => {
-      setAlertMsg("");
-    }, 3000);
-  };
-
   return (
     <GithubState>
-      <Router>
-        <Navbar />
-        <Alert alert={alertMsg} />
-        <Switch>
-          <Route
-            exact
-            path='/'
-            render={(props) => (
-              <Fragment>
-                <Search setAlert={setAlert} />
-                <Clear />
-                <Users />
-              </Fragment>
-            )}
-          />
-          <Route exact path='/user/:login' component={User} />
-        </Switch>
-      </Router>
+      <AlertState>
+        <Router>
+          <Navbar />
+          <Alert />
+          <Switch>
+            <Route
+              exact
+              path='/'
+              render={(props) => (
+                <Fragment>
+                  <Search />
+                  <Clear />
+                  <Users />
+                </Fragment>
+              )}
+            />
+            <Route exact path='/user/:login' component={User} />
+          </Switch>
+        </Router>
+      </AlertState>
     </GithubState>
   );
 };
