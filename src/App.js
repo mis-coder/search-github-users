@@ -1,15 +1,13 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
 import "./App.css";
-import Users from "./components/users/Users";
-import Search from "./components/users/Search";
-import Clear from "./components/layout/Clear";
 import Alert from "./components/layout/Alert";
 import User from "./components/users/User";
 import GithubState from "./context/github/GithubState";
 import AlertState from "./context/alert/AlertState";
-
+import PageNotFound from "./components/pages/PageNotFound";
+import Home from "./components/pages/Home";
 const App = () => {
   return (
     <GithubState>
@@ -18,18 +16,9 @@ const App = () => {
           <Navbar />
           <Alert />
           <Switch>
-            <Route
-              exact
-              path='/'
-              render={(props) => (
-                <Fragment>
-                  <Search />
-                  <Clear />
-                  <Users />
-                </Fragment>
-              )}
-            />
+            <Route exact path='/' component={Home} />
             <Route exact path='/user/:login' component={User} />
+            <Route component={PageNotFound} />
           </Switch>
         </Router>
       </AlertState>
