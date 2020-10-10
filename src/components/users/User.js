@@ -35,54 +35,56 @@ const User = ({ match }) => {
         <Link to='/'>
           <i className='fa fa-arrow-circle-left'></i>
         </Link>
-        <div className='user-info-grid'>
-          <div className='user-info-card'>
-            <img
-              src={avatar_url}
-              alt=''
-              style={{ width: "150px", borderRadius: "50%" }}
-            />
-            <h1>{name}</h1>
-            <p>{location}</p>
-          </div>
-          <div className='user-info-card'>
-            {bio && (
-              <Fragment>
-                <h1>Bio</h1>
-                <p>{bio}</p>
-              </Fragment>
-            )}
-            <a href={html_url}>Visit Github Profile</a>
-            <ul>
-              {login && (
-                <li>
-                  <strong>Username: </strong>
-                  {login}
-                </li>
+        <div className='container'>
+          <div className='user-info-grid'>
+            <div className='user-info-card'>
+              <img
+                src={avatar_url}
+                alt=''
+                style={{ width: "150px", borderRadius: "50%" }}
+              />
+              <h1>{name}</h1>
+              <p>{location}</p>
+            </div>
+            <div className='user-info-card'>
+              {bio && (
+                <Fragment>
+                  <h1>Bio</h1>
+                  <p>{bio}</p>
+                </Fragment>
               )}
-              {company && (
-                <li>
-                  <strong>Company: </strong>
-                  {company}
-                </li>
-              )}
+              <a href={html_url}>Visit Github Profile</a>
+              <ul>
+                {login && (
+                  <li>
+                    <strong>Username: </strong>
+                    {login}
+                  </li>
+                )}
+                {company && (
+                  <li>
+                    <strong>Company: </strong>
+                    {company}
+                  </li>
+                )}
 
-              {blog && (
-                <li>
-                  <strong>Website: </strong>
-                  {blog}
-                </li>
-              )}
-            </ul>
+                {blog && (
+                  <li>
+                    <strong>Website: </strong>
+                    {blog}
+                  </li>
+                )}
+              </ul>
+            </div>
           </div>
+          <div className='repo-info'>
+            <div>Followers: {followers}</div>
+            <div>Following: {following}</div>
+            <div>Public Repos: {public_repos}</div>
+            <div>Public Gists: {public_gists}</div>
+          </div>
+          <Repos repos={repos} />
         </div>
-        <div className='repo-info'>
-          <div>Followers: {followers}</div>
-          <div>Following: {following}</div>
-          <div>Public Repos: {public_repos}</div>
-          <div>Public Gists: {public_gists}</div>
-        </div>
-        <Repos repos={repos} />
       </Fragment>
     );
   }

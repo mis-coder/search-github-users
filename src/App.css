@@ -30,7 +30,7 @@ button {
 }
 
 .container {
-  margin: 4rem;
+  margin: 4rem 15rem;
 }
 
 .navbar {
@@ -289,5 +289,11 @@ button {
   .user-info-card:first-child,
   .user-info-card:last-child {
     margin: 0 1rem;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .container {
+    margin: 0;
   }
 }
